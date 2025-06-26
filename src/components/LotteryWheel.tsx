@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Participant } from '../types';
 import logo from '../assets/logo.png';
 
@@ -20,7 +20,6 @@ const LotteryWheel: React.FC<LotteryWheelProps> = ({
   const [displayedParticipants, setDisplayedParticipants] = useState<Participant[]>([]);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const spinDuration = 3000; // 3 seconds
-  const spinInterval = 50; // 50ms between each name change
 
   useEffect(() => {
     if (isSpinning) {
@@ -28,7 +27,6 @@ const LotteryWheel: React.FC<LotteryWheelProps> = ({
       setDisplayedParticipants(repeated);
       setCurrentIndex(0);
       let elapsed = 0;
-      let localIndex = 0;
       let running = true;
       let lastTimeout: NodeJS.Timeout | null = null;
       let lastIndex = -1;
@@ -130,20 +128,18 @@ const LotteryWheel: React.FC<LotteryWheelProps> = ({
       <div className="relative flex flex-col items-center justify-center w-full max-w-lg mx-auto mb-8">
         <div className="bg-white border border-primary/10 rounded-2xl shadow-lg px-2 py-6 w-full flex flex-col items-center" style={{ minHeight: 90 }}>
           <div className="relative w-full h-12 md:h-16 overflow-hidden flex items-center justify-center">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                className="absolute inset-0 flex items-center justify-center w-full"
-                initial={{ y: 60, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -60, opacity: 0 }}
-                transition={{ duration: 0.25 }}
-              >
-                <span className="text-3xl md:text-4xl font-title text-text select-none truncate w-full text-center">
-                  {currentParticipant?.nombre || 'Cargando...'}
-                </span>
-              </motion.div>
-            </AnimatePresence>
+            <motion.div
+              key={currentIndex}
+              className="absolute inset-0 flex items-center justify-center w-full"
+              initial={{ y: 60, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -60, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+            >
+              <span className="text-3xl md:text-4xl font-title text-text select-none truncate w-full text-center">
+                {currentParticipant?.nombre || 'Cargando...'}
+              </span>
+            </motion.div>
           </div>
           <div className="text-center mt-2">
             <span className="text-text/70 text-base md:text-lg font-sans select-none">

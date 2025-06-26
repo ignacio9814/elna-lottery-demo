@@ -60,32 +60,8 @@ const LotteryPage: React.FC = () => {
     }
   };
 
-  // Paso 4: Animación de ruleta para premios principales
-  const handleSpinComplete = () => {
-    setIsSpinning(false);
-  };
-
   const handleWinnerSelected = (winner: Participant) => {
     setCurrentTopWinner(winners[topWinnerIndex]);
-  };
-
-  const handleNextTopWinner = () => {
-    if (topWinnerIndex + 1 < config.topWinnersCount) {
-      setTopWinnerIndex(topWinnerIndex + 1);
-      setIsSpinning(true);
-    } else {
-      setStep('results');
-      // Guardar en historial
-      const newHistory: LotteryHistory = {
-        id: generateId(),
-        date: new Date().toISOString(),
-        participants: participants.length,
-        winners,
-        totalWinners: config.totalWinners
-      };
-      const updatedHistory = addToHistory(history, newHistory);
-      setHistory(updatedHistory);
-    }
   };
 
   // Paso 5: Resultados

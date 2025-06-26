@@ -1,5 +1,5 @@
 import * as XLSX from 'xlsx';
-import { Participant, ExcelData } from '../types';
+import { Participant } from '../types';
 
 // Función auxiliar para normalizar nombres de columna
 const normalizeHeader = (header: string): string => {

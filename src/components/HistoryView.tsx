@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { LotteryHistory } from '../types';
 import { formatDate } from '../utils/lotteryUtils';
 import * as XLSX from 'xlsx';
