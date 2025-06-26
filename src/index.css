@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', 'Open Sans', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply min-h-screen text-text;
+    background: linear-gradient(135deg, #ffffff 0%, #f1eaf7 100%);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white font-semibold py-3 px-6 rounded-2xl shadow-lg transform transition-all duration-200 hover:bg-primary/90 hover:scale-105 active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-primary font-semibold py-3 px-6 rounded-2xl shadow-lg transform transition-all duration-200 hover:bg-primary/10 hover:scale-105 active:scale-95;
+  }
+  
+  .card {
+    @apply bg-white/70 backdrop-blur-md border border-primary/10 rounded-2xl shadow-lg;
+  }
+  
+  .input-field {
+    @apply bg-secondary border border-primary/20 rounded-lg px-4 py-3 text-text placeholder-text/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200;
+  }
+  
+  .lottery-container {
+    @apply relative overflow-hidden bg-white/80 backdrop-blur-md rounded-2xl border border-primary/20;
+  }
+  
+  .winner-card {
+    @apply bg-gradient-to-br from-accent to-primary text-white p-6 rounded-2xl shadow-2xl transform transition-all duration-500;
+  }
+  
+  .table-container {
+    @apply bg-white/80 backdrop-blur-md border border-primary/10 rounded-2xl overflow-hidden;
+  }
+  
+  .table-header {
+    @apply bg-primary/10 text-primary font-semibold;
+  }
+  
+  .table-row {
+    @apply border-b border-primary/10 hover:bg-secondary/40 transition-colors duration-200;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px rgba(93, 59, 140, 0.18);
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+} 
